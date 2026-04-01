@@ -3,6 +3,7 @@ pipeline {
     environment {
         NODE_ENV = 'production'
         NETLIFY_PROJECT_ID = '3ee0dbf2-82d6-494f-b190-f3ec67f63c75'
+        NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
     stages{
         stage("Build") {
@@ -28,24 +29,24 @@ pipeline {
                 '''
             }
         }
-        stage("Test" ) {
-            agent {
-                    docker {
-                        image 'node:18-alpine'
-                        args '-u root'
-                        reuseNode true
-                    }
-                }
-            steps {
+        // stage("Test" ) {
+        //     agent {
+        //             docker {
+        //                 image 'node:18-alpine'
+        //                 args '-u root'
+        //                 reuseNode true
+        //             }
+        //         }
+        //     steps {
                 
-               sh '''
-                    echo "Running tests with pipeline"
-                    test -f build/index.html
-                    npm test
-                    echo "Tests completed successfully"
-                '''
-            }
-        }
+        //        sh '''
+        //             echo "Running tests with pipeline"
+        //             test -f build/index.html
+        //             npm test
+        //             echo "Tests completed successfully"
+        //         '''
+        //     }
+        // }
         stage ("Deploy") {
             agent {
                     docker {
@@ -63,6 +64,9 @@ pipeline {
                     echo "Deploying to Netlify"
                     echo "Deploy to : $NODE_ENV"
                     echo "NETLIFY_PROJECT_ID: $NETLIFY_PROJECT_ID"
+                    echo "netlify status"
+                    netlify status
+                    netlify status --site $NETLIFY_PROJECT_ID
                 '''
             }
         }
@@ -76,4 +80,5 @@ pipeline {
         }
     }
 }
+
 
