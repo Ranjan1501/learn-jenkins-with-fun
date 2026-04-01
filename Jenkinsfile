@@ -26,7 +26,11 @@ pipeline {
         }
         stage("Test" ) {
             steps {
-                echo "test is running and in progress"
+               sh '''
+                    echo "Running tests with pipeline"
+                    test -f build/index.html
+                    echo "Tests completed successfully"
+                '''
             }
         }
 
