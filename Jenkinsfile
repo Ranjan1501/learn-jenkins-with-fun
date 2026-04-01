@@ -15,6 +15,7 @@ pipeline {
                     node --version
                     npm --version
                     echo "Installing dependencies and building the application with pipeline use npm ci instead of npm install"
+                    rm -rf node_modules
                     npm ci 
                     npm run build
                     echo "Build completed successfully"
