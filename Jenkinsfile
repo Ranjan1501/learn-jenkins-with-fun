@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         NODE_ENV = 'production'
-        NETLIFY_PROJECT_ID = '3ee0dbf2-82d6-494f-b190-f3ec67f63c75'
+        NETLIFY_SITE_ID = '3ee0dbf2-82d6-494f-b190-f3ec67f63c75'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
     stages{
@@ -66,7 +66,9 @@ pipeline {
                     echo "NETLIFY_PROJECT_ID: $NETLIFY_PROJECT_ID"
                     echo "netlify status"
                     netlify status
-                    netlify status --site $NETLIFY_PROJECT_ID
+                    netlify deploy --dir=build --prod 
+                    echo "Deployment completed successfully"
+                    
                 '''
             }
         }
