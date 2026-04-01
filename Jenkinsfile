@@ -16,7 +16,6 @@ pipeline {
                     node --version
                     npm --version
                     echo "Installing dependencies and building the application with pipeline use npm ci instead of npm install"
-                    sudo chown -R 1000:1000 /var/lib/jenkins/workspace/learn-jenkins-app/
                     rm -rf node_modules
                     npm ci 
                     npm run build
