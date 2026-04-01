@@ -55,7 +55,7 @@ pipeline {
                     echo "Deploying the application"
                     npm install netlify-cli
                     echo "Checking Netlify CLI version"
-                    netify --version
+                    netlify --version
                     echo "Deploying to Netlify"
                 '''
             }
