@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh '''
                     echo "Deploying the application"
-                    npm install netlify-cli -g
+                    npm install netlify-cli
                     echo "Checking Netlify CLI version"
                     netify --version
                     echo "Deploying to Netlify"
