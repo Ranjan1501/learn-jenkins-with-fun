@@ -60,7 +60,6 @@ pipeline {
                     npm install -g netlify-cli
                     echo "Checking Netlify CLI version"
                     netlify
-                    node_modules/.bin/netlify --version
                     echo "Deploying to Netlify"
                     echo "Deploy to : $NODE_ENV"
                     echo "NETLIFY_PROJECT_ID: $NETLIFY_PROJECT_ID"
