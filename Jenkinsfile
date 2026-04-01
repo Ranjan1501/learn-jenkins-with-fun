@@ -44,5 +44,11 @@ pipeline {
         }
 
     }
+    post {
+        always {
+            echo "Collecting test results"
+            junit 'test-results/junit.xml'
+        }
+    }
 }
 
