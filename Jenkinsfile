@@ -66,7 +66,7 @@ pipeline {
                     echo "NETLIFY_PROJECT_ID: $NETLIFY_PROJECT_ID"
                     echo "netlify status"
                     netlify status
-                    netlify deploy --dir=build --prod --build=false
+                    netlify deploy --dir=build --prod --command=""
                     echo "Deployment completed successfully"
                     
                 '''
